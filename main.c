@@ -3,7 +3,6 @@
 #include "print2binary.h"
 #include "alghoryhm.h"
 
-
 int main(void)
 {
     unsigned  ui_in_number = 0;
@@ -11,25 +10,25 @@ int main(void)
 
     printf("sizeof(unsigned int) = %ld \n"
            "sizeof(double) = %ld \n\n"
-           "Значение переменной unsigned int = ",
+           "The value of the variable unsigned int = ",
            sizeof(ui_in_number), sizeof(d_in_number));
     scanf("%u", &ui_in_number);
 
-    printf("Значение переменной double = ");
+    printf("The value of the variable double = ");
     scanf("%lf", &d_in_number);
 
     print_ui2b(&ui_in_number);
     print_d2b (&d_in_number);
 
-    printf("Алгоритм с unsigned int:\n");
+    printf("Algorithm unsigned int:\n");
     change_state_in_ui(&ui_in_number);
     print_ui2b(&ui_in_number);
-    printf("Получили unsigned = %u\n", ui_in_number);
+    printf("Got unsigned = %u\n", ui_in_number);
 
-    printf("Алгоритм с double:\n");
+    printf("Algorithm double:\n");
     change_state_in_d((long*) (&d_in_number));
     print_d2b (&d_in_number);
-    printf("Получили double = %.14lf\n", d_in_number);
+    printf("Got double = %.14lf\n", d_in_number);
 
     return 0;
 }

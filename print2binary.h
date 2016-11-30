@@ -4,23 +4,23 @@
 
 void print_ui2b(unsigned* ui_in_number){
     printf("\n=================\n"
-           "uint из файла:\n");
+           "uint from file:\n");
     print_ui2b_file(ui_in_number);
 
-    printf("\nuint сдвигами:\n");
+    printf("\nuint shift:\n");
     print_ui2b_shifts(ui_in_number);
     printf("\n=================\n");
 }
 
 void print_d2b(double* d_in_number){
     printf("\n=================\n"
-           "double из файла:\n");
+           "double from file:\n");
     print_d2b_file(d_in_number);
 
-    printf("\ndouble из union:\n");
+    printf("\ndouble of union:\n");
     print_d2b_union(d_in_number);
 
-    printf("\ndouble из cast:\n");
+    printf("\ndouble of cast:\n");
     print_d2b_cast(*d_in_number);
     printf("\n=================\n");
 }
