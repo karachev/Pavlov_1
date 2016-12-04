@@ -9,7 +9,7 @@ void change_state_in_ui(unsigned* ui_in_number){
     unsigned short unsigned_size_of_bits =  sizeof(unsigned) * CHAR_BIT;
 
     printf("\nEnter in the format: \n"
-           "the state [0.1], the highest bit number [0-31], close near the number of bits [0-31]\n");
+           "the state [0.1], the highest bit number(user_lsb) [0-31], close near the number of bits(user_range) [0-31]\n");
 
     scanf("%d %hu %hu", &bits_state, &user_lsb, &user_range);
     while ((user_lsb + 1) + user_range > unsigned_size_of_bits){
@@ -22,7 +22,7 @@ void change_state_in_ui(unsigned* ui_in_number){
 
     mask <<= (unsigned_size_of_bits - user_lsb);
     mask >>= (unsigned_size_of_bits - user_range);
-    mask <<= (user_range -1);
+    mask <<= user_range;
 
     *ui_in_number = (bits_state) ? (*ui_in_number) | mask :
                                    (*ui_in_number) & (~mask);

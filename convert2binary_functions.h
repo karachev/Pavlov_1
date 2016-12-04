@@ -10,6 +10,7 @@ void print_d2b_file(double* in_num){
     FILE   *p_file;
     size_t num_size = sizeof(*in_num);
 
+
     if ((p_file = fopen("tmp_double.txt", "w+")) == NULL){
         printf("Error opening file");
         exit(1);
@@ -60,7 +61,8 @@ void print_d2b_cast(double in_num){
 //For work with unsigned int
 void print_ui2b_file(unsigned* in_num){
     FILE   *p_file;
-    size_t num_size = sizeof(*in_num);
+    //size_t num_size = sizeof(*in_num);
+    size_t num_size = 1;
 
     if ((p_file = fopen("tmp_uint.txt", "w+")) == NULL){
         printf("Error opening file");
@@ -88,7 +90,8 @@ void print_ui2b_file(unsigned* in_num){
 
 void print_ui2b_shifts(unsigned* in_num){
     int i;
-    for (i = sizeof(unsigned) * CHAR_BIT - 1; i >= 0; --i){
+    //for (i = sizeof(unsigned) * CHAR_BIT - 1; i >= 0; --i){
+    for (i = 1 * CHAR_BIT - 1; i >= 0; --i){
         printf("%d", ((*in_num >> i) & 1));
         if (!(i % CHAR_BIT) && i != 0) printf(" ");
     }
