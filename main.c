@@ -8,9 +8,9 @@ int main(void)
     unsigned  ui_in_number = 0;
     double    d_in_number  = 0.0;
 
-    printf("sizeof(unsigned int) = %ld \n"
+    printf("sizeof(unsigned long int) = %ld \n"
            "sizeof(double) = %ld \n\n"
-           "The value of the variable unsigned int = ",
+           "The value of the variable unsigned long int = ",
            sizeof(ui_in_number), sizeof(d_in_number));
     scanf("%u", &ui_in_number);
 
@@ -20,7 +20,7 @@ int main(void)
     print_ui2b(&ui_in_number);
     print_d2b (&d_in_number);
 
-    printf("Algorithm unsigned int:\n");
+    printf("Algorithm unsigned long int:\n");
     change_state_in_ui(&ui_in_number);
     print_ui2b(&ui_in_number);
     printf("Got unsigned = %u\n", ui_in_number);

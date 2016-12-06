@@ -3,17 +3,17 @@
 #include "convert2binary_functions.h"
 
 void print_ui2b(unsigned* ui_in_number){
-    printf("\n=================\n"
-           "uint from file:\n");
+    printf("\n------------------------\n"
+           "unsigned long int from file:\n");
     print_ui2b_file(ui_in_number);
 
-    printf("\nuint shift:\n");
+    printf("\nulint shift:\n");
     print_ui2b_shifts(ui_in_number);
-    printf("\n=================\n");
+    printf("\n------------------------\n");
 }
 
 void print_d2b(double* d_in_number){
-    printf("\n=================\n"
+    printf("\n------------------------\n"
            "double from file:\n");
     print_d2b_file(d_in_number);
 
@@ -22,6 +22,6 @@ void print_d2b(double* d_in_number){
 
     printf("\ndouble of cast:\n");
     print_d2b_cast(*d_in_number);
-    printf("\n=================\n");
+    printf("\n------------------------\n");
 }
 #endif // PRINT2BINARY_H

@@ -10,23 +10,22 @@ void print_d2b_file(double* in_num){
     FILE   *p_file;
     size_t num_size = sizeof(*in_num);
 
-
     if ((p_file = fopen("tmp_double.txt", "w+")) == NULL){
         printf("Error opening file");
         exit(1);
     }
 
-    fwrite(in_num, 1,num_size, p_file);
+    fwrite(in_num, 1,num_size, p_file); //Записываем массив в блок памяти
 
     size_t j;
     for (j = 0; j < num_size; ++j){
         char   c_buffer = "";
-        fseek(p_file, -1-j, SEEK_END);
-        fread(&c_buffer, 1, 1, p_file);
+        fseek(p_file, -1-j, SEEK_END); //Управление указателя в потоке
+        fread(&c_buffer, 1, 1, p_file); //Считывает массив
 
         int i;
         for (i = CHAR_BIT - 1; i >= 0; --i){
-            printf("%d", ((c_buffer >> i) & 1));
+            printf("%d", ((c_buffer >> i) & 1)); //сдвигаем побитовое И и записывает в p_file
         }
         printf(" ");
     }
@@ -35,7 +34,7 @@ void print_d2b_file(double* in_num){
     remove("tmp_double.txt");
 }
 
-void print_d2b_union(double* in_num){
+void print_d2b_union(double* in_num){//WORK
     union
         {
             double as_double;
@@ -45,11 +44,11 @@ void print_d2b_union(double* in_num){
     int i;
     for (i = sizeof(long) * CHAR_BIT - 1; i >= 0; --i){
         printf("%d", ((data.as_long >> i) & 1));
-        if (!(i % CHAR_BIT) && i != 0) printf(" ");
+        if (!(i % CHAR_BIT) && i != 0) printf(" "); //char_bit побитовое чтение
     }
 }
 
-void print_d2b_cast(double in_num){
+void print_d2b_cast(double in_num){//WORK
     long* p_tmp = (long*) (&in_num);
     int i;
     for (i = sizeof(long) * CHAR_BIT - 1; i >= 0; --i){
@@ -61,25 +60,24 @@ void print_d2b_cast(double in_num){
 //For work with unsigned int
 void print_ui2b_file(unsigned* in_num){
     FILE   *p_file;
-    //size_t num_size = sizeof(*in_num);
-    size_t num_size = 1;
+    size_t num_size = sizeof(*in_num);
 
     if ((p_file = fopen("tmp_uint.txt", "w+")) == NULL){
         printf("Error opening file");
         exit(1);
     }
 
-    fwrite(in_num, 1,num_size, p_file);
+    fwrite(in_num, 1,num_size, p_file); //Записывает массив в блок памяти
 
     size_t j;
     for (j = 0; j < num_size; ++j){
         char   c_buffer = "";
-        fseek(p_file, -1-j, SEEK_END);
-        fread(&c_buffer, 1, 1, p_file);
+        fseek(p_file, -1-j, SEEK_END); // Управляет указателем в потоке
+        fread(&c_buffer, 1, 1, p_file); // Считывает файл
 
         int i;
         for (i = CHAR_BIT - 1; i >= 0; --i){
-            printf("%d", ((c_buffer >> i) & 1));
+            printf("%d", ((c_buffer >> i) & 1)); //Записывает в .txt файл
         }
         printf(" ");
     }
@@ -88,10 +86,9 @@ void print_ui2b_file(unsigned* in_num){
     remove("tmp_uint.txt");
 }
 
-void print_ui2b_shifts(unsigned* in_num){
+void print_ui2b_shifts(unsigned* in_num){ //WORK
     int i;
-    //for (i = sizeof(unsigned) * CHAR_BIT - 1; i >= 0; --i){
-    for (i = 1 * CHAR_BIT - 1; i >= 0; --i){
+    for (i = sizeof(unsigned) * CHAR_BIT - 1; i >= 0; --i){
         printf("%d", ((*in_num >> i) & 1));
         if (!(i % CHAR_BIT) && i != 0) printf(" ");
     }
