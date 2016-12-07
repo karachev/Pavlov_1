@@ -20,15 +20,6 @@ void change_state_in_ui(unsigned* ui_in_number){
 
     unsigned mask = ~0;
 
-//    mask <<= (unsigned_size_of_bits - user_lsb );
-//    mask >>= (unsigned_size_of_bits - user_range);
-//    mask <<= (user_range);
-
-//    mask >>= (user_lsb + 1 - user_range); // 0
-//    mask <<= (unsigned_size_of_bits - user_range); //24
-//    mask >>= (user_lsb + 1); // 8
-
-    //mask >>= (unsigned_size_of_bits - user_range);
     mask <<= (unsigned_size_of_bits - user_lsb - 1);
     mask >>= (unsigned_size_of_bits - user_lsb - 1);
 
@@ -49,21 +40,12 @@ void change_state_in_d(long* d_in_number){
            "the state [0.1], the highest bit number [0-63], close near the number of bits [0-64]\n");
     scanf("%d %hu %hu", &bits_state, &user_lsb, &user_range); //Считываем с консоли параметры
     while (user_range > 64 || user_lsb > 63 || user_lsb < 0 || user_range < 0 || user_range > user_lsb + 1){
-    //while ((user_lsb + 1) + user_range > double_size_of_bits){
         printf("Invalid input, enter the correct values ??coinciding with unsigned sizes (4 bytes):\n");
         scanf("%d %hu %hu", &bits_state, &user_lsb, &user_range); //Считываем с консоли параметры
     }
     if(!(user_lsb || user_range)) return;
 
     unsigned long mask = ~0;
-
-    //mask <<= (double_size_of_bits - user_lsb);
-    //mask >>= (double_size_of_bits - user_range);
-    //mask <<= (user_range -1);
-
-//    mask >>= (user_lsb - user_range + 1);
-//    mask <<= (double_size_of_bits - user_range);
-//    mask >>= (user_lsb + 1);
 
     mask <<= (double_size_of_bits - user_lsb - 1);
     mask >>= (double_size_of_bits - user_lsb - 1);
