@@ -62,7 +62,7 @@ void print_ui2b_file(unsigned* in_num){
     FILE   *p_file;
     size_t num_size = sizeof(*in_num);
 
-    if ((p_file = fopen("tmp_uint.txt", "w+")) == NULL){
+    if ((p_file = fopen("tmp_uint.txt", "w+")) == NULL){ //создает файл для чтения записи (по умолчанию текстовый)
         printf("Error opening file");
         exit(1);
     }
