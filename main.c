@@ -26,7 +26,6 @@ enum ConsoleColor {
 
 int main(void)
 {
-
     int numBg;
     int numCol;
     /*Получение дескриптора*/
